@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Controllers;
+using SportsStore.WebUI.HtmlHelpers;
+using SportsStore.WebUI.ViewModels;
 
 namespace SportsStore.UnitTests
 {
@@ -32,7 +35,7 @@ namespace SportsStore.UnitTests
             controller._pageSize = 3;
 
             //Action
-            IEnumerable<Product> result = (IEnumerable<Product>) controller.List(2).Model;
+            IEnumerable<Product> result = (IEnumerable<Product>)controller.List(2).Model;
 
             //Assert
             Product[] prodArray = result.ToArray();
@@ -40,5 +43,26 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(prodArray[0].Name, "P4");
             Assert.AreEqual(prodArray[1].Name, "P5");
         }
+
+        [TestMethod]
+        public void Can_Generate_Page_Links()
+        {
+            HtmlHelper myHelper = null;
+
+            PagingInfo paginInfo = new PagingInfo
+            {
+                CurrentPage = 2,
+                TotalItems = 28,
+                ItemsPerPage = 10
+            };
+
+            Func<int, string> pageUrlDelegate = i => "Page" + i;
+
+            // Act
+            MvcHtmlString result = myHelper.PageLinks(paginInfo, pageUrlDelegate);
+
+            // Assert
+            Assert.AreEqual(result.ToString(), @"<a href=""Page1"">1</a><a class=""selected"" href=""Page2"">2</a><a href=""Page3"">3</a>");
+;        }
     }
 }
