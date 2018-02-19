@@ -14,8 +14,8 @@ namespace SportsStore.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                null, // Only matches the empty URL (i.e. /)
-                null,
+                null, 
+                url: "", // Only matches the empty URL (i.e. /)
                 defaults: new { controller = "Product", action = "List", category = (string)null, page = 1 }
             );
 
