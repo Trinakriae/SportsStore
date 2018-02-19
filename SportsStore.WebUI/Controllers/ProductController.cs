@@ -21,10 +21,11 @@ namespace SportsStore.WebUI.Controllers
         {
             ProductsListViewModel viewModel = new ProductsListViewModel
             {
-                Products = _repository.Products.Where(p => category == null || p.Category == category)
-                                               .OrderBy(p => p.ProductID)
-                                               .Skip((page - 1) * _pageSize)
-                                               .Take(_pageSize),
+                Products = _repository.Products
+                                      .Where(p => category == null || p.Category == category)
+                                      .OrderBy(p => p.ProductID)
+                                      .Skip((page - 1) * _pageSize)
+                                      .Take(_pageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
