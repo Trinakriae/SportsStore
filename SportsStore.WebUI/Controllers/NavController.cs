@@ -1,4 +1,5 @@
 ﻿using SportsStore.Domain.Abstract;
+using SportsStore.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,18 @@ namespace SportsStore.WebUI.Controllers
         }
 
         // GET: Nav
-        public PartialViewResult Menu()
+        public PartialViewResult Menu(string category = null)
         {
-            IEnumerable<string> categories = _repository.Products
-                                                        .Select(x => x.Category)
-                                                        .Distinct()
-                                                        .OrderBy(x => x);
-            return PartialView(categories);
+            CategoriesListViewModel viewmodel = new CategoriesListViewModel
+            {
+                Categories = _repository.Products
+                                        .Select(x => x.Category)
+                                        .Distinct()
+                                        .OrderBy(x => x),
+                SelectedCategory = category
+            }; 
+
+            return PartialView(viewmodel);
         }
     }
 }
