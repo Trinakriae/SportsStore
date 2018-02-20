@@ -108,5 +108,26 @@ namespace SportsStore.UnitTests
             Assert.IsTrue(prodArray[0].Name == "P2" && prodArray[0].Category == "Cat2");
             Assert.IsTrue(prodArray[1].Name == "P4" && prodArray[1].Category == "Cat2");
         }
+
+        [TestMethod]
+        public void Generate_Category_Specific_Product_Count()
+        {
+            //Arrange 
+
+            ProductController controller = new ProductController(_mock.Object);
+            controller._pageSize = 3;
+
+            //Action
+            int result1 = ((ProductsListViewModel)controller.List("Cat1").Model).PagingInfo.TotalItems;
+            int result2 = ((ProductsListViewModel)controller.List("Cat2").Model).PagingInfo.TotalItems;
+            int result3 = ((ProductsListViewModel)controller.List("Cat3").Model).PagingInfo.TotalItems;
+            int resultAll = ((ProductsListViewModel)controller.List(null).Model).PagingInfo.TotalItems;
+
+            //Assert
+            Assert.AreEqual(result1, 2);
+            Assert.AreEqual(result2, 2);
+            Assert.AreEqual(result3, 1);
+            Assert.AreEqual(resultAll, 5);
+        }
     }
 }

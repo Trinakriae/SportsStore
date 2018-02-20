@@ -38,7 +38,7 @@ namespace SportsStore.UnitTests
             //Arrange - Create the controller
             NavController target = new NavController(_mock.Object);
 
-            string[] results = ((IEnumerable<string>)target.Menu().Model).ToArray();
+            string[] results = ((CategoriesListViewModel)target.Menu().Model).Categories.ToArray();
 
             Assert.AreEqual(results.Length, 3);
             Assert.AreEqual(results[0], "Cat1");
