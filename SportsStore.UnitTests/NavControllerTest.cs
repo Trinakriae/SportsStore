@@ -6,6 +6,7 @@ using Moq;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Controllers;
+using SportsStore.WebUI.ViewModels;
 
 namespace SportsStore.UnitTests
 {
@@ -34,6 +35,7 @@ namespace SportsStore.UnitTests
         [TestMethod]
         public void Can_Create_Categories()
         {
+            //Arrange - Create the controller
             NavController target = new NavController(_mock.Object);
 
             string[] results = ((IEnumerable<string>)target.Menu().Model).ToArray();
@@ -42,6 +44,20 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(results[0], "Cat1");
             Assert.AreEqual(results[1], "Cat2");
             Assert.AreEqual(results[2], "Cat3");
+        }
+
+        [TestMethod]
+        public void Indicates_Selected_Category()
+        {
+            //Arrange - Create the controller
+            NavController target = new NavController(_mock.Object);
+
+            //Arrange - Define the category to select
+            string categoryToSelect = "Cat1";
+
+            string result = ((CategoriesListViewModel)target.Menu(categoryToSelect).Model).SelectedCategory;
+
+            Assert.AreEqual(categoryToSelect, result);
         }
     }
 }
