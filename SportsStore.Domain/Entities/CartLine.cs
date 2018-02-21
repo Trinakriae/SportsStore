@@ -4,5 +4,10 @@
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }
+
+        public decimal ComputeValue()
+        {
+            return Product.Price * Quantity;
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace SportsStore.Domain.Entities
 
         public decimal ComputeTotalValue()
         {
-            return _lineCollection.Sum(e => e.Product.Price * e.Quantity);
+            return _lineCollection.Sum(e => e.ComputeValue());
         }
 
         public void Clear()
