@@ -129,5 +129,25 @@ namespace SportsStore.UnitTests
             // Assert
             Assert.AreEqual(target.Lines.Count(), 0);
         }
+
+        [TestMethod]
+        public void Cannot_Add_Zero_Quantity()
+        {
+            // Arrange - get the products in array
+            Product[] products = _mock.Object.Products.ToArray();
+
+            // Arrange - create a new cart
+            Cart target = new Cart();
+
+            // Arrange - add some items
+            target.AddItem(products[0], 1);
+            target.AddItem(products[0], 0);
+            target.AddItem(products[1], 0);
+
+            // Assert
+            Assert.AreEqual(target.Lines.Where(c => c.Product == products[0]).FirstOrDefault().Quantity, 1);
+            Assert.AreEqual(target.Lines.Where(c => c.Product == products[1]).Count(), 0);
+            Assert.AreEqual(target.Lines.Count(), 1);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -13,11 +14,11 @@ namespace SportsStore.Domain.Entities
             CartLine line = _lineCollection.Where(p => p.Product.ProductID == product.ProductID)
                                            .FirstOrDefault();
 
-            if(line == null)
+            if(line == null && quantity != 0)
             {
                 _lineCollection.Add(new CartLine { Product = product, Quantity = quantity });
             }
-            else
+            else if(line != null)
             {
                 line.Quantity += quantity;
             }
