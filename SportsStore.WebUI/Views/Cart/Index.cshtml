@@ -22,6 +22,14 @@
             <td align="left">@line.Product.Name</td>
             <td align="right">@line.Product.Price.ToString("c")</td>
             <td align="right">@line.ComputeValue().ToString("c")</td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    @Html.Hidden("ProductID", line.Product.ProductID)
+                    @Html.HiddenFor(x => x.ReturnUrl)
+                    <input type="submit" value="Remove" />
+                }
+            </td>
         </tr>
         }
     </tbody>
