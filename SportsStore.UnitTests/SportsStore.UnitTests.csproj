@@ -70,6 +70,7 @@
     <Compile Include="ProductControllerTest.cs" />
     <Compile Include="NavControllerTest.cs" />
     <Compile Include="CartTest.cs" />
+    <Compile Include="CartControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
