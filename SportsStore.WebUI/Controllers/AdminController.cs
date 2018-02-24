@@ -1,4 +1,5 @@
 ﻿using SportsStore.Domain.Abstract;
+using SportsStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,9 +52,10 @@ namespace SportsStore.WebUI.Controllers
         }
 
         // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
+        public ViewResult Edit(int productId)
         {
-            return View();
+            Product product = _repository.Products.FirstOrDefault(p => p.ProductID == productId); 
+            return View(product);
         }
 
         // POST: Admin/Edit/5
