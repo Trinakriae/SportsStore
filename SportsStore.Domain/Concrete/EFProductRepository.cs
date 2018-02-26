@@ -38,6 +38,12 @@ namespace SportsStore.Domain.Concrete
             _context.SaveChanges();
         }
 
+        public void DeleteProduct(Product product)
+        {
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // Per rilevare chiamate ridondanti
 

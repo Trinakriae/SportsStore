@@ -40,7 +40,7 @@
         <td>
             @using (Html.BeginForm("Delete", "Admin"))
             {
-                @Html.HiddenFor(modelItem => item.ProductID)
+                @Html.Hidden("productID", item.ProductID)
                 <input type="submit" value="Delete" />
             }
         </td>

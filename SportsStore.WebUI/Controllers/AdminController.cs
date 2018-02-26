@@ -82,26 +82,17 @@ namespace SportsStore.WebUI.Controllers
             }
         }
 
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: Admin/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int productId)
         {
-            try
+            Product product = _repository.Products.FirstOrDefault(p => p.ProductID == productId);
+            if(product != null)
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _repository.DeleteProduct(product);
+                TempData["message"] = string.Format("{0} was deleted", product.Name);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         } 
     }
 }

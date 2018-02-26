@@ -22,5 +22,11 @@ namespace SportsStore.Domain.Abstract
         /// </summary>
         /// <param name="product"></param>
         void SaveProduct(Product product);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        void DeleteProduct(Product product);
     }
 }
