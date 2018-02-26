@@ -1,5 +1,7 @@
-﻿using SportsStore.Domain.Abstract;
+﻿using AutoMapper;
+using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
+using SportsStore.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,8 +56,11 @@ namespace SportsStore.WebUI.Controllers
         // GET: Admin/Edit/5
         public ViewResult Edit(int productId)
         {
-            Product product = _repository.Products.FirstOrDefault(p => p.ProductID == productId); 
-            return View(product);
+            Product product = _repository.Products.FirstOrDefault(p => p.ProductID == productId);
+
+            ProductEditViewModel viewModel = Mapper.Map<Product, ProductEditViewModel>(product);
+
+            return View(viewModel);
         }
 
         // POST: Admin/Edit/5
@@ -72,7 +77,8 @@ namespace SportsStore.WebUI.Controllers
             else
             {
                 //There is something wrong with the data values
-                return View(product);
+                ProductEditViewModel viewModel = Mapper.Map<Product, ProductEditViewModel>(product);
+                return View(viewModel);
             }
         }
 
