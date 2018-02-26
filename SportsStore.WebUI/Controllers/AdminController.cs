@@ -34,7 +34,7 @@ namespace SportsStore.WebUI.Controllers
         // GET: Admin/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Edit", new ProductEditViewModel());
         }
 
         // POST: Admin/Create
@@ -63,13 +63,14 @@ namespace SportsStore.WebUI.Controllers
             return View(viewModel);
         }
 
-        // POST: Admin/Edit/5
+        //// POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(ProductEditViewModel productViewModel)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                Product product = Mapper.Map<ProductEditViewModel, Product>(productViewModel);
                 _repository.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has been saved", product.Name);
                 return RedirectToAction("Index");
@@ -77,8 +78,7 @@ namespace SportsStore.WebUI.Controllers
             else
             {
                 //There is something wrong with the data values
-                ProductEditViewModel viewModel = Mapper.Map<Product, ProductEditViewModel>(product);
-                return View(viewModel);
+                return View(productViewModel);
             }
         }
 

@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.ProductID)
         </td>
         <td>
-            @Html.ActionLink(item.Name, "Edit", new { id = item.ProductID })
+            @Html.ActionLink(item.Name, "Edit", new { item.ProductID })
         </td>
         <td class="NumericCol">
             @item.Price.ToString("c")
