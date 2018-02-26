@@ -60,17 +60,19 @@ namespace SportsStore.WebUI.Controllers
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Product product)
         {
-            try
-            {
-                // TODO: Add update logic here
 
+            if(ModelState.IsValid)
+            {
+                _repository.SaveProduct(product);
+                TempData["message"] = string.Format("{0} has been saved", product.Name);
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                //There is something wrong with the data values
+                return View(product);
             }
         }
 
@@ -94,6 +96,6 @@ namespace SportsStore.WebUI.Controllers
             {
                 return View();
             }
-        }
+        } 
     }
 }

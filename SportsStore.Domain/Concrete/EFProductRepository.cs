@@ -30,6 +30,11 @@ namespace SportsStore.Domain.Concrete
             {
                 _context.Products.Add(product);
             }
+            else
+            {
+                var result = _context.Products.FirstOrDefault(p => p.ProductID == product.ProductID);
+                _context.Entry(result).CurrentValues.SetValues(product);
+            }            
             _context.SaveChanges();
         }
 
