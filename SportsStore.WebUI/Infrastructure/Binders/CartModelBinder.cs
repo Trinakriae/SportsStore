@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SportsStore.WebUI.Binders
+namespace SportsStore.WebUI.Infrastructure.Binders
 {
     public class CartModelBinder : IModelBinder
     {

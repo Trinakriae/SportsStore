@@ -1,7 +1,7 @@
 ﻿using SportsStore.Domain.Entities;
-using SportsStore.WebUI.Binders;
 using SportsStore.WebUI.Infrastructure;
 using SportsStore.WebUI.Infrastructure.Automapper;
+using SportsStore.WebUI.Infrastructure.Binders;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
