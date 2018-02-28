@@ -1,4 +1,5 @@
-﻿using SportsStore.Domain.Abstract;
+﻿using AutoMapper.QueryableExtensions;
+using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.ViewModels;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace SportsStore.WebUI.Controllers
                                       .Where(p => category == null || p.Category == category)
                                       .OrderBy(p => p.ProductID)
                                       .Skip((page - 1) * _pageSize)
-                                      .Take(_pageSize),
+                                      .Take(_pageSize).ProjectTo<ProductDisplayViewModel>(),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,

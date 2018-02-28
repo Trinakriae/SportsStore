@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.ViewModels;
@@ -23,7 +24,7 @@ namespace SportsStore.WebUI.Controllers
         // GET: Admin
         public ViewResult Index()
         {
-            return View(_repository.Products);
+            return View(_repository.Products.ProjectTo<ProductDisplayViewModel>());
         }
 
         // GET: Admin/Details/5

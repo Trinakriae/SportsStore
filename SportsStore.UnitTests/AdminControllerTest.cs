@@ -96,7 +96,7 @@ namespace SportsStore.UnitTests
             ProductEditViewModel productViewModel = new ProductEditViewModel { Name = "Test" };
 
             // Act - try to save the product
-            ActionResult result = target.Edit(productViewModel);
+            ActionResult result = target.Edit(productViewModel, null);
             
             // Assert - check that the repository was called
             _mock.Verify(m => m.SaveProduct(It.IsAny<Product>()));
@@ -115,7 +115,7 @@ namespace SportsStore.UnitTests
             target.ModelState.AddModelError("error", "error");
 
             // Act - try to save the product
-            ActionResult result = target.Edit(productViewModel);
+            ActionResult result = target.Edit(productViewModel, null);
 
             // Assert - check that the repository was not called
             _mock.Verify(m => m.SaveProduct(It.IsAny<Product>()), Times.Never());

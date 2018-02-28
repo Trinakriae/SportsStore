@@ -9,6 +9,7 @@ namespace SportsStore.WebUI.Infrastructure.Automapper
         public AutoMapperProductProfile()
         {
             CreateMap<Product, ProductEditViewModel>();
+            CreateMap<Product, ProductDisplayViewModel>();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace SportsStore.UnitTests
             ProductsListViewModel result = (ProductsListViewModel)controller.List(null, 2).Model;
 
             //Assert
-            Product[] prodArray = result.Products.ToArray();
+            ProductDisplayViewModel[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
             Assert.AreEqual(prodArray[0].Name, "P4");
             Assert.AreEqual(prodArray[1].Name, "P5");
@@ -103,7 +103,7 @@ namespace SportsStore.UnitTests
             ProductsListViewModel result = (ProductsListViewModel)controller.List("Cat2", 1).Model;
 
             //Assert
-            Product[] prodArray = result.Products.ToArray();
+            ProductDisplayViewModel[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
             Assert.IsTrue(prodArray[0].Name == "P2" && prodArray[0].Category == "Cat2");
             Assert.IsTrue(prodArray[1].Name == "P4" && prodArray[1].Category == "Cat2");

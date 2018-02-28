@@ -10,7 +10,6 @@ namespace SportsStore.WebUI.ViewModels
 {
     public class ProductEditViewModel
     {
-        [DisplayName("ID")]
         [HiddenInput(DisplayValue = false)]
         public int ProductID { get; set; }
 
