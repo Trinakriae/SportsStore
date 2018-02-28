@@ -72,6 +72,7 @@
     <Compile Include="CartTest.cs" />
     <Compile Include="CartControllerTest.cs" />
     <Compile Include="AdminControllerTest.cs" />
+    <Compile Include="TestProjectInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

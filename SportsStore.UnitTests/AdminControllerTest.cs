@@ -7,7 +7,6 @@ using Moq;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Controllers;
-using SportsStore.WebUI.Infrastructure.Automapper;
 using SportsStore.WebUI.ViewModels;
 
 namespace SportsStore.UnitTests
@@ -35,7 +34,7 @@ namespace SportsStore.UnitTests
         [ClassInitialize]
         public static void Initialize(TestContext context)
         {
-            AutoMapperWebConfiguration.Configure();
+            TestProjectInitialize.ConfigureAutoMapper();
         }
 
         [TestMethod]
@@ -45,7 +44,7 @@ namespace SportsStore.UnitTests
             AdminController target = new AdminController(_mock.Object);
 
             //Action
-            Product[] result = ((IEnumerable<Product>)target.Index().ViewData.Model).ToArray();
+            ProductDisplayViewModel[] result = ((IEnumerable<ProductDisplayViewModel>)target.Index().ViewData.Model).ToArray();
 
             //Assert
             Assert.IsTrue(result.Length == 5);

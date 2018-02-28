@@ -20,7 +20,7 @@ namespace SportsStore.WebUI
             //Custom code
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
-            AutoMapperWebConfiguration.Configure();
+            AutoMapperWebUIConfiguration.Configure();
         }
     }
 }

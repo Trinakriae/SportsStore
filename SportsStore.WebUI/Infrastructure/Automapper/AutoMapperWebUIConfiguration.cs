@@ -2,7 +2,7 @@
 
 namespace SportsStore.WebUI.Infrastructure.Automapper
 {
-    public static class AutoMapperWebConfiguration
+    public static class AutoMapperWebUIConfiguration
     {
         public static void Configure()
         {

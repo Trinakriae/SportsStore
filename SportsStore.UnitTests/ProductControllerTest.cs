@@ -33,6 +33,11 @@ namespace SportsStore.UnitTests
             }.AsQueryable());
         }
 
+        [ClassInitialize]
+        public static void Initialize(TestContext context)
+        {
+            TestProjectInitialize.ConfigureAutoMapper();
+        }
 
         [TestMethod]
         public void Can_Paginate()
