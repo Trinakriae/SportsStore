@@ -66,11 +66,17 @@ namespace SportsStore.WebUI.Controllers
 
         //// POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(ProductEditViewModel productViewModel)
+        public ActionResult Edit(ProductEditViewModel productViewModel, HttpPostedFileBase image)
         {
-
             if (ModelState.IsValid)
             {
+                if(image != null)
+                {
+                    productViewModel.ImageMimeType = image.ContentType;
+                    productViewModel.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(productViewModel.ImageData, 0, image.ContentLength);
+                }
+
                 Product product = Mapper.Map<ProductEditViewModel, Product>(productViewModel);
                 _repository.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has been saved", product.Name);
