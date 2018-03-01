@@ -181,7 +181,7 @@
     <Compile Include="Infrastructure\Automapper\AutoMapperWebUIConfiguration.cs" />
     <Compile Include="Infrastructure\Automapper\AutoMapperProductProfile.cs" />
     <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
-    <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CartIndexViewModel.cs" />
     <Compile Include="ViewModels\CategoriesListViewModel.cs" />
